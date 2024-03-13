@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Main from './ReactKonva/DrawingCanvas'
+import Main from './BoolOperation/ClipperPath'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
