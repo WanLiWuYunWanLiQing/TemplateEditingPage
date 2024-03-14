@@ -1,0 +1,1 @@
+export { default as Martinez } from './martinez-polygon-clipping/ClipperPath';

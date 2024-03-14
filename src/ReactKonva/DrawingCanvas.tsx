@@ -1,7 +1,7 @@
 import { KonvaEventObject } from 'konva/lib/Node';
 import React, { useState } from 'react';
 import { Stage, Layer, Line } from 'react-konva';
-import { Point } from './models';
+import { Point } from '../Common/models';
 
 const DrawingBoard: React.FC = () => {
     const [lines, setLines] = useState<Point[][]>([]);
@@ -14,7 +14,7 @@ const DrawingBoard: React.FC = () => {
             const stage = event.target.getStage();
             const point = stage?.getPointerPosition() ?? { x: 0, y: 0 };
             const newLines = lines.filter(line => {
-                const distance = Math.sqrt(Math.pow(line[0].x - point.x, 2) + Math.pow(line[0].y - point.y, 2));
+                const distance = Math.sqrt(Math.pow(line[0].X - point.x, 2) + Math.pow(line[0].Y - point.y, 2));
                 return distance > 10; // 设置清除半径为10像素
             });
             setLines(newLines);
@@ -23,7 +23,7 @@ const DrawingBoard: React.FC = () => {
 
         setIsDrawing(true);
         const { x, y } = event.target.getStage()?.getPointerPosition() ?? { x: 0, y: 0 };
-        setLines([...lines, [{ x, y }]]);
+        setLines([...lines, [{ X: x, Y: y }]]);
     };
 
     const handleMouseMove = (event: KonvaEventObject<MouseEvent>) => {
@@ -31,7 +31,7 @@ const DrawingBoard: React.FC = () => {
         const stage = event.target.getStage();
         const point = stage?.getPointerPosition() ?? { x: 0, y: 0 };
         let lastLine = lines[lines.length - 1];
-        lastLine = lastLine.concat([point]);
+        lastLine = lastLine.concat([{ X: point.x, Y: point.y }]);
         lines.splice(lines.length - 1, 1, lastLine);
         setLines([...lines]);
     };
@@ -50,15 +50,15 @@ const DrawingBoard: React.FC = () => {
                 {isErasing ? '绘图模式' : '擦除模式'}
             </button>
             <Stage
-                width={window.innerWidth}
-                height={window.innerHeight}
+                width={window.innerWidth * 0.98}
+                height={window.innerHeight * 0.98}
                 onMouseDown={handleMouseDown}
                 onMousemove={handleMouseMove}
                 onMouseup={handleMouseUp}
             >
                 <Layer>
                     {lines.map((line, i) => (
-                        <Line key={i} points={line.flatMap((p) => [p.x, p.y])} stroke="black" strokeWidth={2} />
+                        <Line key={i} points={line.flatMap((p) => [p.X, p.Y])} stroke="black" strokeWidth={2} />
                     ))}
                 </Layer>
             </Stage>

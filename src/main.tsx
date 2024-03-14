@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Main from './BoolOperation/ClipperPath'
+import { Martinez } from './BoolOperation/index'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Main />
+    <Martinez />
   </React.StrictMode>,
 )
 

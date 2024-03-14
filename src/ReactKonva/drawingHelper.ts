@@ -1,5 +1,5 @@
 
-import { Size } from './models';
+import { Size } from '../Common/models';
 
 class drawingHelper {
     private static bgImageSize: Size = { width: 0, height: 0 };
