@@ -6,9 +6,8 @@ import * as BO from './boolOperationHelper';
 
 const layer = new Konva.Layer();
 const path = new Konva.Path({
-    x: 250,
-    y: 100,
-    fill: 'green',
+    y: 200,
+    fill: 'rgba(0, 255, 0, 0.5)',
     fillRule: 'evenodd',
 });
 const Demo = () => {
@@ -26,19 +25,16 @@ const Demo = () => {
 
         stage.add(layer);
 
-        // 定义两个简单的路径（矩形和圆形）
         const path1 = new Konva.Path({
-            x: 100,
-            y: 100,
-            data: 'M0,0 L100,0 L100,100 L0,100 Z M100,50 L100,100 L150,50 Z', // 矩形+三角形  M100,50 L150,0 L150,50Z'
+
+            data: 'M100,50 L200,100 L300,50 L400,100 L500,50 L600,100 L700,50 L800,100 L900,50 L1000,100 L1000,200 L900,250 L800,200 L700,250 L600,200 L500,250 L400,200 L300,250 L200,200 L100,250 L100,150 Z',
             fill: 'blue',
         });
 
         const path2 = new Konva.Path({
-            x: 100,
-            y: 100,
-            data: 'M25,50 L125,50 L125,150 L25,150 Z',
-            fill: 'red',
+
+            data: 'M50,50 L150,50 L150,150 L50,150 Z M200,50 L300,50 L300,150 L200,150 Z M350,50 L450,50 L450,150 L350,150 Z M500,50 L600,50 L600,150 L500,150 Z M650,50 L750,50 L750,150 L650,150 Z',
+            fill: 'rgba(255, 0, 0, 0.5)',
         });
         BO.test(BO.parsePathDataToPolygon(path1.data()), BO.parsePathDataToPolygon(path2.data()));
 

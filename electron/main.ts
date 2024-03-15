@@ -20,8 +20,8 @@ const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 800,   // 设置宽度
-    height: 600,  // 设置高度
+    width: 1600,   // 设置宽度
+    height: 1200,  // 设置高度
     maximizable: false, // 禁用最大化按钮
     minimizable: false, // 禁用最小化按钮
     icon: path.join(process.env.VITE_PUBLIC, 'icon.ico'),
